@@ -1,0 +1,47 @@
+GET http://localhost:8000/api/v1/users
+
+###
+GET http://localhost:8000/api/v1/
+
+###
+GET http://localhost:8000/api/v1/users
+
+###
+POST http://localhost:8000/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "oloo3@gmail.com",
+    "password": "12345678"
+}
+
+###
+
+GET http://localhost:8000/api/v1/jobs 
+
+###
+
+POST http://localhost:8000/api/v1/jobs 
+Content-Type: application/json
+
+{
+    "title" : "New Job",
+    "description": "New Job Description",
+    "schedule" : "1 week",
+    "budget" : "200"
+}
+
+###
+POST http://localhost:8000/api/v1/register
+Content-Type: application/json
+
+{
+    "role": "Freelancer",
+    "type" : "Individual",
+    "name": "oloo3",
+    "email": "oloo3@gmail.com",
+    "password": "12345678"
+}
+
+###
+POST http://localhost:8000/api/v1/logout
