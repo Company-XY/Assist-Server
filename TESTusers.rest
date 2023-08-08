@@ -15,21 +15,6 @@ Content-Type: application/json
     "password": "12345678"
 }
 
-###
-
-GET http://localhost:8000/api/v1/jobs 
-
-###
-
-POST http://localhost:8000/api/v1/jobs 
-Content-Type: application/json
-
-{
-    "title" : "New Job",
-    "description": "New Job Description",
-    "schedule" : "1 week",
-    "budget" : "200"
-}
 
 ###
 POST http://localhost:8000/api/v1/register
