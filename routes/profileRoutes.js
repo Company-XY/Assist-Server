@@ -5,7 +5,7 @@ const {
   getProfile,
 } = require("../controllers/profileController");
 
-router.post("/:id/profile", createProfile);
+router.post("/profile/:id", createProfile);
 
 router.get("/profile/:id", getProfile);
 

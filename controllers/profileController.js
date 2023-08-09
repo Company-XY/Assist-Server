@@ -30,13 +30,13 @@ const createProfile = asyncHandler(async (req, res) => {
 const getProfile = asyncHandler(async (req, res) => {
   try {
     const profileId = req.params.id; // Get the profileId from the URL parameter
-    const profile = await Profile.findById({ profileId }).populate("user");
-    //const profile = await Profile.findById({_id:req.params}).populate("user");
+    const profile = await Profile.findById(profileId).populate("user");
 
     if (!profile) {
-      return res.status(404).json("Profile not found");
+      res.status(404).json("Profile not found");
     } else {
       res.status(200).json(profile);
+      console.log(profile);
     }
   } catch (error) {
     res.json({ Message: error.message });
