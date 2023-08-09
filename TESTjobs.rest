@@ -1,3 +1,45 @@
 GET http://localhost:8000/api/v1/jobs
 
 ###
+GET http://localhost:8000/api/v1/jobs/64d3a095253b7e4d0b251f96
+
+###
+###
+DELETE  http://localhost:8000/api/v1/jobs/64d39c7f998073eeb4764a52
+
+###
+
+POST http://localhost:8000/api/v1/jobs
+Content-Type: application/json
+
+{
+    "title": "New Job 2 update option",
+    "description": "Description for the new job",
+    "budget": 1200,
+    "skills" : ["Project Management", "Ms Word"],
+    "schedule": "3 days"
+}
+###
+
+DELETE  http://localhost:8000/api/v1/jobs
+Content-Type: application/json
+
+{
+    "title": "New Job 2",
+    "description": "Description for the new job",
+    "budget": 1200,
+    "skills" : ["Project Management", "Ms Word"],
+    "schedule": "3 days"
+}
+###
+
+PUT  http://localhost:8000/api/v1/jobs/64d3a095253b7e4d0b251f96
+Content-Type: application/json
+
+{
+    "title": "New Job 2023",
+    "description": "Description for the new job testing put route",
+    "budget": 1200,
+    "skills" : ["Project Management", "Ms Word"],
+    "schedule": "3 days"
+}

@@ -5,6 +5,7 @@ const jobSchema = mongoose.Schema(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     description: {
       type: String,
@@ -18,11 +19,11 @@ const jobSchema = mongoose.Schema(
     },
     schedule: {
       type: String,
-      //required: true,
+      required: true,
     },
     budget: {
       type: Number,
-      //required: true,
+      required: true,
     },
   },
   {

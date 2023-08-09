@@ -25,4 +25,4 @@ mongoose
   .catch((error) => console.log({ message: error.message }));
 
 app.use("/api/v1", userRoutes);
-app.use("/api/v1/jobs", jobRoutes);
+app.use("/api/v1", jobRoutes);
