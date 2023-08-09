@@ -2,47 +2,51 @@ const mongoose = require("mongoose");
 
 const profileSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
     phone: {
       type: Number,
       required: true,
     },
     location: {
       type: String,
-      required: true,
+      //required: true,
     },
     experience: {
       type: Number,
-      required: true,
+      //required: true,
     },
     skills: {
       type: Array,
-      requried: true,
+      //requried: true,
     },
     schedule: {
       type: String,
-      required: true,
+      //required: true,
     },
     tasks: {
       type: Array,
-      required: true,
+      //required: true,
     },
     hours: {
       type: String,
-      required: true,
+      //required: true,
     },
     portfolio: {
       type: String,
     },
     sample_work: {
-      type: File,
+      type: String,
     },
     payment_method: {
       type: String,
-      required: true,
+      //required: true,
     },
     payment_rate: {
       type: String,
-      required: true,
+      //required: true,
     },
   },
   {

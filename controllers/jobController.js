@@ -39,7 +39,10 @@ const getOneJob = asyncHandler(async (req, res) => {
 const updateJob = asyncHandler(async (req, res) => {
   try {
     //Route not complete
-    const oneJob = await Job.findByIdAndUpdate({ _id: req.params.id});
+    const oneJob = await Job.findByIdAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
     res.status(200).json(oneJob);
   } catch (error) {
     res.status(404).json({ message: error.message });

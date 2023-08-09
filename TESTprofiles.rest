@@ -1,0 +1,18 @@
+GET http://localhost:8000/api/v1/profile/64d26e68c917260a5a69f7956
+
+###
+
+GET http://localhost:8000/api/v1/profile
+
+###
+GET http://localhost:8000/api/v1/profile/64d26e68c917260a5a69f795
+
+###
+
+POST http://localhost:8000/api/v1/64d26e68c917260a5a69f795/profile/
+Content-Type: application/json
+
+{
+"phone": 2354678755,
+"location": "Nairobi 2"
+}

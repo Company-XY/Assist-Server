@@ -1,11 +1,11 @@
 GET http://localhost:8000/api/v1/jobs
 
 ###
-GET http://localhost:8000/api/v1/jobs/64d3a095253b7e4d0b251f96
+GET http://localhost:8000/api/v1/jobs/64d3f456827c5826f6c65c8a
 
 ###
 ###
-DELETE  http://localhost:8000/api/v1/jobs/64d39c7f998073eeb4764a52
+DELETE  http://localhost:8000/api/v1/jobs/64d3f2fe827c5826f6c65c80
 
 ###
 
@@ -21,11 +21,11 @@ Content-Type: application/json
 }
 ###
 
-DELETE  http://localhost:8000/api/v1/jobs
+POST  http://localhost:8000/api/v1/jobs
 Content-Type: application/json
 
 {
-    "title": "New Job 2",
+    "title": "New Job 2 New Usiku 2",
     "description": "Description for the new job",
     "budget": 1200,
     "skills" : ["Project Management", "Ms Word"],
@@ -33,13 +33,13 @@ Content-Type: application/json
 }
 ###
 
-PUT  http://localhost:8000/api/v1/jobs/64d3a095253b7e4d0b251f96
+PUT http://localhost:8000/api/v1/jobs/64d3f456827c5826f6c65c8a
 Content-Type: application/json
 
 {
-    "title": "New Job 2023",
-    "description": "Description for the new job testing put route",
+    "title": "New Job 2023 New Usiku Updated",
+    "description": "",
     "budget": 1200,
     "skills" : ["Project Management", "Ms Word"],
-    "schedule": "3 days"
+    "schedule": "65 days"
 }
