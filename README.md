@@ -19,5 +19,5 @@ Create a new branch... --- git switch -c 'new branch' or checkout - 'nw_branch'
 <br/>
 then push 
 <br/
-Open PR then push...
+Open push.. then open PR...
  
