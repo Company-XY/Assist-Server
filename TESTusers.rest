@@ -10,7 +10,7 @@ POST http://localhost:8000/api/v1/login
 Content-Type: application/json
 
 {
-    "email": "assist.trial1@gmail.com",
+    "email": "assist.africa1@gmail.com",
     "password": "12345678" 
 }
 
@@ -22,8 +22,8 @@ Content-Type: application/json
 {
     "role": "Freelancer",
     "type" : "Individual",
-    "name": "oloo3",
-    "email": "oloo3@gmail.com",
+    "name": "Assist Africa 1",
+    "email": "assist.africa1@gmail.com",
     "password": "12345678"
 }
 

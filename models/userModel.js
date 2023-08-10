@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 const userSchema = mongoose.Schema(
   {
@@ -29,6 +29,7 @@ const userSchema = mongoose.Schema(
     },
     phone: {
       type: Number,
+      unique: true,
       //required: true,
     },
     location: {
