@@ -12,11 +12,12 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
-    generateToken(res, user._id);
+    const token = generateToken(user._id); // Generate a new token
 
     res.json({
       _id: user.id,
       role: user.role,
+      token: token, // Include the generated token
       name: user.name,
       email: user.email,
     });
@@ -25,6 +26,7 @@ const authUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid Email or Password");
   }
 });
+
 
 //@desc Register new user
 //@route POST ..api/v1/register

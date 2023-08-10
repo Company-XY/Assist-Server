@@ -23,11 +23,11 @@ const jobSchema = mongoose.Schema(
     },
     schedule: {
       type: String,
-      required: true,
+      //required: true,
     },
     budget: {
       type: Number,
-      required: true,
+      //required: true,
     },
   },
   {

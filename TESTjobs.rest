@@ -25,7 +25,7 @@ POST  http://localhost:8000/api/v1/jobs
 Content-Type: application/json
 
 {
-    "title": "New Job 2 New Usiku 2",
+    "title": "New Job 1",
     "description": "Description for the new job",
     "budget": 1200,
     "skills" : ["Project Management", "Ms Word"],
