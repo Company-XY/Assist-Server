@@ -31,7 +31,7 @@ const authUser = asyncHandler(async (req, res) => {
 //@access Public
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { role, type, email, name, password, phone } = req.body;
+  const { role, type, email, name, password } = req.body;
 
   const userExists = await User.findOne({ email });
   if (userExists) {
@@ -44,7 +44,6 @@ const registerUser = asyncHandler(async (req, res) => {
       name,
       email,
       password,
-      phone,
     });
 
     if (user) {
@@ -53,7 +52,7 @@ const registerUser = asyncHandler(async (req, res) => {
       res.status(201).json({
         _id: user._id,
         role: user.role,
-        classification: user.classification,
+        type: user.type,
         name: user.name,
         email: user.email,
       });
@@ -86,6 +85,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     res.json({
       _id: user._id,
+      role: user.role,
+      type: user.type,
       name: user.name,
       email: user.email,
       phone: user.phone,
@@ -133,7 +134,6 @@ const updateUserProfile2 = asyncHandler(async (req, res) => {
     throw new Error("User Not Found");
   }
 });
-
 
 //@desc update user profile
 //@route ../api/v1/profile/:id

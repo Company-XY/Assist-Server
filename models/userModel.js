@@ -29,7 +29,7 @@ const userSchema = mongoose.Schema(
     },
     phone: {
       type: Number,
-      required: true,
+      //required: true,
     },
     location: {
       type: String,
@@ -87,6 +87,6 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
