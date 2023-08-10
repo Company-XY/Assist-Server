@@ -7,11 +7,13 @@ const {
   updateJob,
   deleteJob,
 } = require("../controllers/jobController");
-//const { protect } = require("../middlewares/authMiddleware");
+const { protect } = require("../middlewares/authMiddleware");
 
-//router.route("/jobs").get(protect, jobController.getAllJobs).post(protect, jobController.createJob);
-
-router.route("/jobs").get(getJobs).post(createJobs);
-router.route("/jobs/:id").get(getOneJob).put(updateJob).delete(deleteJob);
+router.route("/jobs").get(protect, getJobs).post(protect, createJobs);
+router
+  .route("/jobs/:id")
+  .get(protect, getOneJob)
+  .put(protect, updateJob)
+  .delete(protect, deleteJob);
 
 module.exports = router;

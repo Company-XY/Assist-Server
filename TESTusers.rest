@@ -1,18 +1,17 @@
-GET http://localhost:8000/api/v1/users
 
 ###
 GET http://localhost:8000/api/v1/
 
 ###
-GET http://localhost:8000/api/v1/users
+GET http://localhost:8000/api/v1/profile/
 
 ###
 POST http://localhost:8000/api/v1/login
 Content-Type: application/json
 
 {
-    "email": "oloo3@gmail.com",
-    "password": "12345678"
+    "email": "assist.trial1@gmail.com",
+    "password": "12345678" 
 }
 
 
@@ -30,3 +29,27 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8000/api/v1/logout
+
+###
+
+GET http://localhost:8000/api/v1/profile/
+
+###
+PATCH  http://localhost:8000/api/v1/profile/
+Content-Type: application/json
+
+{
+    "name": "",
+    "email": "",
+    "phone": "",
+    "location" : "",
+    "experience" :"",
+    "skills" : [],
+    "schedule" : "",
+    "tasks" : "",
+    "hours" : "",
+    "portfolio" : "",
+    "sample_work" : "",
+    "payment_method" : "",
+    "payment_rate" : ""
+}

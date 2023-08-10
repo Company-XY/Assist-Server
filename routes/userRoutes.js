@@ -18,8 +18,8 @@ router.post("/register", registerUser);
 router.post("/login", authUser);
 router.post("/logout", logoutUser);
 router
-  .route("/profile")
-  .get(protect, getUserProfile)
-  .put(protect, updateUserProfile);
+  .route("/profile/:id")
+  .get( getUserProfile)
+  .patch(updateUserProfile);
 
 module.exports = router;
