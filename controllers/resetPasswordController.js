@@ -23,7 +23,7 @@ const sentResetLink = asyncHandler(async (req, res) => {
     await user.save();
 
     // Send reset password email using Elastic Email API
-    const resetLink = `http://localhost:5173/reset/password/${resetToken}`;
+    const resetLink = `https://assistafricatest.netlify.app/reset/password/${resetToken}`;
     const data = {
       from: "oloogeorge633@gmail.com",
       to: email,
