@@ -35,11 +35,12 @@ const authUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
   const { role, type, email, name, password } = req.body;
 
-  const userExists = await User.findOne({ email });
-  if (userExists) {
-    res.status(400);
-    throw new Error("User Already Exists");
-  } else {
+  try {
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "User Already Exists" });
+    }
+
     const user = await User.create({
       role,
       type,
@@ -49,7 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
     });
 
     if (user) {
-      generateToken(res, user._id);
+      const token = generateToken(user._id);
 
       res.status(201).json({
         _id: user._id,
@@ -57,13 +58,17 @@ const registerUser = asyncHandler(async (req, res) => {
         type: user.type,
         name: user.name,
         email: user.email,
+        token, // Include the token in the response
       });
     } else {
-      res.status(400);
-      throw new Error("Invalid user data");
+      res.status(400).json({ message: "Invalid user data" });
     }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 });
+
 
 //@desc Logout user
 //@Route ../api/v1/logout

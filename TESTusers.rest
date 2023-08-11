@@ -1,6 +1,6 @@
 
 ###
-GET http://localhost:8000/api/v1/
+GET http://localhost:8000/api/v1/users
 
 ###
 GET http://localhost:8000/api/v1/profile/
@@ -22,8 +22,8 @@ Content-Type: application/json
 {
     "role": "Freelancer",
     "type" : "Individual",
-    "name": "Assist Africa 1",
-    "email": "assist.africa1@gmail.com",
+    "name": "George Oloo",
+    "email": "collog1824@gmail.com",
     "password": "12345678"
 }
 

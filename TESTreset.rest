@@ -1,0 +1,20 @@
+
+GET http://localhost:8000/api/v1 
+
+###
+
+POST http://localhost:8000/api/v1/reset/
+Content-Type: application/json
+
+{
+    "email": "collog1824@gmail.com"
+}
+
+###
+
+POST http://localhost:8000/api/v1/reset/password
+Content-Type: application/json
+
+{
+    "password" : "87654321"
+}
