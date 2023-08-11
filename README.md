@@ -2,7 +2,14 @@
 For Authentication using JWT
 <br/>
 Endpoints to be listed here
-//Users endpoint....
+<br/>
+https://auth-server-0bsp.onrender.com/api/v1
+<br />
+Home of the API Should return a json object with the latter statement when checked in the browser
+<br/>
+//Users endpoint.... https://auth-server-0bsp.onrender.com/api/v1/users
+<br/>
+https://auth-server-0bsp.onrender.com/api/v1/jobs (GET, POST, PATCH, DELETE)
 //Jobs endpoint...
 <br />
 To update the repo....
