@@ -21,19 +21,24 @@ const getUserJobs = asyncHandler(async (req, res) => {
 });
 
 const createJobs = asyncHandler(async (req, res) => {
-  //will add code to ensure only auth'ed clients can post jobs
   try {
-    const { title, description, budget, schedule, skills } = req.body;
-    const userId = req.user.id;
-    const newJob = await Job.create({
-      user: userId,
-      title,
-      description,
-      budget,
-      schedule,
-      skills,
-    });
-    res.status(201).json(newJob);
+    const userString = localStorage.getItem("user");
+    const user = JSON.parse(userString);
+
+    if (!user || !user.email) {
+      return res.status(400).json({ message: "User email not found." });
+      
+    } else {
+
+      const { title, description } = req.body;
+
+      const newJob = await Job.create({
+        user_email: user.email,
+        title,
+        description,
+      });
+      res.status(201).json(newJob);
+    }
   } catch (error) {
     res.status(402).json({ message: error.message });
   }
