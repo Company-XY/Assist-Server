@@ -6,6 +6,10 @@ const jobSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User", // Reference to the User model
     },
+    user_email: {
+      type: String, // This is where the user's email will be stored
+      required: true,
+    },
     title: {
       type: String,
       required: true,
