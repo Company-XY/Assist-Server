@@ -1,9 +1,19 @@
 const asyncHandler = require("express-async-handler");
 const Job = require("../models/jobModel");
 
-const getJobs = asyncHandler(async (req, res) => {
+const getAllJobs = asyncHandler(async (req, res) => {
   try {
     const jobs = await Job.find();
+    res.status(200).json(jobs);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+const getUserJobs = asyncHandler(async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const jobs = await Job.find({ user: userId });
     res.status(200).json(jobs);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -14,7 +24,9 @@ const createJobs = asyncHandler(async (req, res) => {
   //will add code to ensure only auth'ed clients can post jobs
   try {
     const { title, description, budget, schedule, skills } = req.body;
+    const userId = req.user.id;
     const newJob = await Job.create({
+      user: userId,
       title,
       description,
       budget,
@@ -58,4 +70,11 @@ const deleteJob = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getJobs, createJobs, getOneJob, deleteJob, updateJob };
+module.exports = {
+  getAllJobs,
+  getUserJobs,
+  createJobs,
+  getOneJob,
+  deleteJob,
+  updateJob,
+};

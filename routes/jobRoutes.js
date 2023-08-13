@@ -1,20 +1,26 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getJobs,
-  createJobs,
+  getAllJobs,
+  getUserJobs,
+  createJob,
   getOneJob,
   updateJob,
   deleteJob,
 } = require("../controllers/jobController");
-//const { protect } = require("../middlewares/authMiddleware");
-const { protect } = require("../middlewares/auth2");
+const { protect } = require("../middlewares/jobMiddleware");
 
-router.route("/jobs").get(protect, getJobs).post(protect, createJobs);
+// Routes for handling all jobs
+router.route("/jobs").get(getAllJobs).post(protect, createJob);
+
+// Routes for handling individual job
 router
   .route("/jobs/:id")
-  .get(protect, getOneJob)
+  .get(getOneJob)
   .put(protect, updateJob)
   .delete(protect, deleteJob);
+
+// Route for fetching user-specific jobs
+router.get("/user-jobs", protect, getUserJobs);
 
 module.exports = router;
