@@ -12,8 +12,8 @@ const getAllJobs = asyncHandler(async (req, res) => {
 
 const getUserJobs = asyncHandler(async (req, res) => {
   try {
-    const jobId = req.params.jobId;
-    const jobs = await Job.findById(jobId).populate("user");
+    const userId = req.user.id;
+    const jobs = await Job.find({ user: userId });
     res.status(200).json(jobs);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -26,7 +26,7 @@ const createJobs = asyncHandler(async (req, res) => {
     const { title, description, budget, schedule, skills } = req.body;
     const userId = req.user.id;
     const newJob = await Job.create({
-      userId,
+      user: userId,
       title,
       description,
       budget,
