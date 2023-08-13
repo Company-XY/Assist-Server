@@ -11,7 +11,7 @@ const { protect } = require("../middlewares/jobMiddleware");
 
 const router = express.Router();
 // Routes for handling all jobs
-router.route("/jobs").get(protect, getAllJobs).post(protect, createJobs);
+router.route("/jobs").get(getAllJobs).post(protect, createJobs);
 
 // Routes for handling individual job
 router
