@@ -22,23 +22,18 @@ const getUserJobs = asyncHandler(async (req, res) => {
 
 const createJobs = asyncHandler(async (req, res) => {
   try {
-    const userString = localStorage.getItem("user");
-    const user = JSON.parse(userString);
+    const { title, description, user_email } = req.body;
 
-    if (!user || !user.email) {
+    if (!user_email) {
       return res.status(400).json({ message: "User email not found." });
-      
-    } else {
-
-      const { title, description } = req.body;
-
-      const newJob = await Job.create({
-        user_email: user.email,
-        title,
-        description,
-      });
-      res.status(201).json(newJob);
     }
+
+    const newJob = await Job.create({
+      user_email,
+      title,
+      description,
+    });
+    res.status(201).json(newJob);
   } catch (error) {
     res.status(402).json({ message: error.message });
   }
