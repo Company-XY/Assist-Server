@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getJobs,
+  getAllJobs,
+  getUserJobs,
   createJobs,
   getOneJob,
   updateJob,
@@ -9,10 +10,11 @@ const {
 } = require("../controllers/jobController");
 const { protect } = require("../middlewares/jobMiddleware");
 
-router.route("/jobs").get(protect, getJobs).post(protect, createJobs);
+router.route("/jobs").get(protect, getAllJobs).post(protect, createJobs);
 router
   .route("/jobs/:id")
   .get(protect, getOneJob)
+  .get(protect, getUserJobs)
   .put(protect, updateJob)
   .delete(protect, deleteJob);
 
