@@ -21,9 +21,10 @@ Content-Type: application/json
 
 {
     "type" : "Individual",
-    "name": "Assist Africa 11",
-    "email": "assist.africa11@gmail.com",
-    "password": "Olosko2018?"
+    "name": "Assist Africa 13",
+    "email": "assist.africa13@gmail.com",
+    "password": "Olosko2018?",
+    "consultation": "true"
 }
 
 ###

@@ -83,7 +83,7 @@ const registerUser = asyncHandler(async (req, res) => {
 //Default register Freelancer function
 const registerFreelancer = asyncHandler(async (req, res) => {
   const role = "Freelancer";
-  const { type, email, name, password } = req.body;
+  const { type, email, name, password, consultation } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
@@ -107,6 +107,7 @@ const registerFreelancer = asyncHandler(async (req, res) => {
       name,
       email,
       password,
+      consultation,
     });
 
     if (user) {
@@ -118,6 +119,7 @@ const registerFreelancer = asyncHandler(async (req, res) => {
         type: user.type,
         name: user.name,
         email: user.email,
+        consultation: user.consultation,
         token, // Include the token in the response
       });
     } else {
@@ -132,7 +134,7 @@ const registerFreelancer = asyncHandler(async (req, res) => {
 //Client register function
 const registerClient = asyncHandler(async (req, res) => {
   const role = "Client";
-  const { type, email, name, password } = req.body;
+  const { type, email, name, password, consultation } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
@@ -156,6 +158,7 @@ const registerClient = asyncHandler(async (req, res) => {
       name,
       email,
       password,
+      consultation,
     });
 
     if (user) {
@@ -167,6 +170,7 @@ const registerClient = asyncHandler(async (req, res) => {
         type: user.type,
         name: user.name,
         email: user.email,
+        consultation: user.consultation,
         token, // Include the token in the response
       });
     } else {
