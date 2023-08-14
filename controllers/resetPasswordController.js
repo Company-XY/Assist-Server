@@ -58,6 +58,7 @@ const sentResetLink = asyncHandler(async (req, res) => {
 
 const resetPassword = asyncHandler(async (req, res) => {
   const { resetToken, newPassword } = req.body;
+
   try {
     const user = await User.findOne({
       resetToken: resetToken,
@@ -68,6 +69,16 @@ const resetPassword = asyncHandler(async (req, res) => {
       return res
         .status(400)
         .json({ message: "Invalid or expired reset token." });
+    }
+
+    // Password validation using regular expression
+    const passwordPattern =
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordPattern.test(newPassword)) {
+      return res.status(400).json({
+        message:
+          "Password must be at least 8 characters long and include at least one letter, one number, and one special character.",
+      });
     }
 
     // Update user's password and reset token fields

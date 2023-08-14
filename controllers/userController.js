@@ -27,7 +27,6 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-
 //@desc Register new user
 //@route POST ..api/v1/register
 //@access Public
@@ -39,6 +38,18 @@ const registerUser = asyncHandler(async (req, res) => {
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: "User Already Exists" });
+    }
+
+    // Password validation using regular expression
+    const passwordPattern =
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordPattern.test(password)) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "Password must be at least 8 characters long and include at least one letter, one number, and one special character.",
+        });
     }
 
     const user = await User.create({
@@ -68,7 +79,6 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 //@desc Logout user
 //@Route ../api/v1/logout
