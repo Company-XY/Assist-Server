@@ -20,6 +20,7 @@ const authUser = asyncHandler(async (req, res) => {
       token: token, // Include the generated token
       name: user.name,
       email: user.email,
+      Balance: user.account_balance,
     });
   } else {
     res.status(401);
@@ -31,6 +32,7 @@ const authUser = asyncHandler(async (req, res) => {
 //@route POST ..api/v1/register
 //@access Public
 
+//Default register function
 const registerUser = asyncHandler(async (req, res) => {
   const { role, type, email, name, password } = req.body;
 
@@ -44,12 +46,108 @@ const registerUser = asyncHandler(async (req, res) => {
     const passwordPattern =
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordPattern.test(password)) {
-      return res
-        .status(400)
-        .json({
-          message:
-            "Password must be at least 8 characters long and include at least one letter, one number, and one special character.",
-        });
+      return res.status(400).json({
+        message:
+          "Password must be at least 8 characters long and include at least one letter, one number, and one special character.",
+      });
+    }
+
+    const user = await User.create({
+      role,
+      type,
+      name,
+      email,
+      password,
+    });
+
+    if (user) {
+      const token = generateToken(user._id);
+
+      res.status(201).json({
+        _id: user._id,
+        role: user.role,
+        type: user.type,
+        name: user.name,
+        email: user.email,
+        token, // Include the token in the response
+      });
+    } else {
+      res.status(400).json({ message: "Invalid user data" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+//Default register Freelancer function
+const registerFreelancer = asyncHandler(async (req, res) => {
+  const role = "Freelancer";
+  const { type, email, name, password } = req.body;
+
+  try {
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "User Already Exists" });
+    }
+
+    // Password validation using regular expression
+    const passwordPattern =
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordPattern.test(password)) {
+      return res.status(400).json({
+        message:
+          "Password must be at least 8 characters long and include at least one letter, one number, and one special character.",
+      });
+    }
+
+    const user = await User.create({
+      role,
+      type,
+      name,
+      email,
+      password,
+    });
+
+    if (user) {
+      const token = generateToken(user._id);
+
+      res.status(201).json({
+        _id: user._id,
+        role: user.role,
+        type: user.type,
+        name: user.name,
+        email: user.email,
+        token, // Include the token in the response
+      });
+    } else {
+      res.status(400).json({ message: "Invalid user data" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+//Client register function
+const registerClient = asyncHandler(async (req, res) => {
+  const role = "Client";
+  const { type, email, name, password } = req.body;
+
+  try {
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "User Already Exists" });
+    }
+
+    // Password validation using regular expression
+    const passwordPattern =
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordPattern.test(password)) {
+      return res.status(400).json({
+        message:
+          "Password must be at least 8 characters long and include at least one letter, one number, and one special character.",
+      });
     }
 
     const user = await User.create({
@@ -107,6 +205,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       phone: user.phone,
+      Account_Balance: user.account_balance,
       location: user.location,
       experience: user.experience,
       skills: user.skills,
@@ -199,12 +298,12 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 });
 
 //homepage
-//@desc update user profile
+//@desc test api up and running
 //@route ../api/v1
 //@access public
 const home = (req, res) => {
   try {
-    res.status(200).json("API is Working");
+    res.status(200).json("Server is running");
   } catch (error) {
     res.status(400);
     console.log({ message: error.message });
@@ -230,7 +329,9 @@ module.exports = {
   home,
   getAll,
   authUser,
-  registerUser,
+  //registerUser,
+  registerClient,
+  registerFreelancer,
   logoutUser,
   getUserProfile,
   updateUserProfile,

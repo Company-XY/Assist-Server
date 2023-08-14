@@ -16,14 +16,24 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:8000/api/v1/register
+POST http://localhost:8000/api/v1/register/client
 Content-Type: application/json
 
 {
-    "role": "Freelancer",
     "type" : "Individual",
-    "name": "Assist Africa 10",
-    "email": "assist.africa10@gmail.com",
+    "name": "Assist Africa 11",
+    "email": "assist.africa11@gmail.com",
+    "password": "Olosko2018?"
+}
+
+###
+POST http://localhost:8000/api/v1/register/freelancer
+Content-Type: application/json
+
+{
+    "type" : "Individual",
+    "name": "Assist Africa 12",
+    "email": "assist.africa12@gmail.com",
     "password": "Olosko2018?"
 }
 
@@ -32,7 +42,7 @@ POST http://localhost:8000/api/v1/logout
 
 ###
 
-GET http://localhost:8000/api/v1/profile/
+GET http://localhost:8000/api/v1/users/
 
 ###
 PATCH  http://localhost:8000/api/v1/profile/

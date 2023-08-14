@@ -32,6 +32,10 @@ const userSchema = mongoose.Schema(
       unique: true,
       //required: true,
     },
+    account_balance: {
+      type: String,
+      default: 0,
+    },
     location: {
       type: String,
       //required: true,
