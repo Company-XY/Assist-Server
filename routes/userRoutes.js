@@ -4,7 +4,9 @@ const {
   home,
   getAll,
   authUser,
-  registerUser,
+  //registerUser,
+  registerClient,
+  registerFreelancer,
   logoutUser,
   getUserProfile,
   updateUserProfile,
@@ -14,12 +16,11 @@ const router = express.Router();
 
 router.get("/", home);
 router.get("/users", getAll);
-router.post("/register", registerUser);
+//router.post("/register", registerUser);
+router.post("/register/client", registerClient);
+router.post("/register/freelancer", registerFreelancer);
 router.post("/login", authUser);
 router.post("/logout", logoutUser);
-router
-  .route("/profile/:id")
-  .get( getUserProfile)
-  .patch(updateUserProfile);
+router.route("/profile/:id").get(getUserProfile).patch(updateUserProfile);
 
 module.exports = router;
