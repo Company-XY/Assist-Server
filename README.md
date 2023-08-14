@@ -9,6 +9,15 @@ Home of the API Should return a json object with the latter statement when check
 <br/>
 //Users endpoint.... https://auth-server-0bsp.onrender.com/api/v1/users
 <br/>
+Client Register: https://auth-server-0bsp.onrender.com/api/v1/register/client 
+Freelancer Register: https://auth-server-0bsp.onrender.com/api/v1/register/freelancer
+
+<br />
+Login:  https://auth-server-0bsp.onrender.com/api/v1/login
+
+<br/>
+User Profile  https://auth-server-0bsp.onrender.com/api/v1/profile/:id
+<br/>
 https://auth-server-0bsp.onrender.com/api/v1/jobs (GET, POST, PATCH, DELETE)
 //Jobs endpoint...
 <br />
