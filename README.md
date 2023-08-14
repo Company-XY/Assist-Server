@@ -10,6 +10,7 @@ Home of the API Should return a json object with the latter statement when check
 //Users endpoint.... https://auth-server-0bsp.onrender.com/api/v1/users
 <br/>
 Client Register: https://auth-server-0bsp.onrender.com/api/v1/register/client 
+<br>
 Freelancer Register: https://auth-server-0bsp.onrender.com/api/v1/register/freelancer
 
 <br />
