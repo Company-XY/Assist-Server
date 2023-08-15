@@ -23,6 +23,10 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+    approved: {
+      type: Boolean,
+      default: false,
+    },
     consultation: {
       type: Boolean,
       default: false,
@@ -37,7 +41,7 @@ const userSchema = mongoose.Schema(
       //required: true,
     },
     account_balance: {
-      type: String,
+      type: Number,
       default: 0,
     },
     location: {
