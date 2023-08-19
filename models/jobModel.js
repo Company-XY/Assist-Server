@@ -2,36 +2,36 @@ const mongoose = require("mongoose");
 
 const jobSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // Reference to the User model
+    },
     user_email: {
-      type: String,
+      type: String, // This is where the user's email will be stored
       required: true,
     },
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     description: {
       type: String,
       required: true,
     },
     files: {
-      type: [String], // Change to an array of strings
-      validate: {
-        validator: (files) => files.length <= 10, // Validate maximum 10 files
-        message: "Maximum of 10 files allowed.",
-      },
+      type: String,
     },
     skills: {
-      type: [String], //Array of strings
-      required: true,
+      type: Array,
     },
     schedule: {
       type: String,
-      required: true,
+      //required: true,
     },
     budget: {
       type: Number,
-      required: true,
+      //required: true,
     },
   },
   {
