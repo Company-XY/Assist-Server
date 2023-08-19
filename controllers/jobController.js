@@ -1,6 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { Job } = require("../models/jobModel");
-const { uploadFiles } = require("./uploadController");
+const Job = require("../models/jobModel");
 
 const getAllJobs = asyncHandler(async (req, res) => {
   try {
@@ -23,34 +22,18 @@ const getUserJobs = asyncHandler(async (req, res) => {
 
 const createJobs = asyncHandler(async (req, res) => {
   try {
-    const { title, description, user_email, skills, schedule, budget } =
-      req.body;
+    const { title, description, user_email } = req.body;
 
     if (!user_email) {
       return res.status(400).json({ message: "User email not found." });
     }
 
-    uploadFiles(req, res, async (error) => {
-      if (error) {
-        return res.status(402).json({ message: error.message });
-      }
-
-      const files = req.files; // Array of uploaded files
-
-      const filePaths = files.map((file) => file.path);
-
-      const newJob = await Job.create({
-        user_email,
-        title,
-        description,
-        files: filePaths,
-        skills,
-        schedule,
-        budget,
-      });
-
-      res.status(201).json(newJob);
+    const newJob = await Job.create({
+      user_email,
+      title,
+      description,
     });
+    res.status(201).json(newJob);
   } catch (error) {
     res.status(402).json({ message: error.message });
   }
@@ -67,7 +50,7 @@ const getOneJob = asyncHandler(async (req, res) => {
 
 const updateJob = asyncHandler(async (req, res) => {
   try {
-    // Route not complete
+    //Route not complete
     const oneJob = await Job.findByIdAndUpdate(
       { _id: req.params.id },
       req.body
