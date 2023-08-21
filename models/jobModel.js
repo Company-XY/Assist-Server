@@ -7,7 +7,7 @@ const jobSchema = mongoose.Schema(
       ref: "User", // Reference to the User model
     },
     user_email: {
-      type: String, // This is where the user's email will be stored
+      type: String,
       required: true,
     },
     title: {
@@ -23,10 +23,10 @@ const jobSchema = mongoose.Schema(
       type: String,
     },
     skills: {
-      type: Array,
+      type: [String],
     },
-    schedule: {
-      type: String,
+    duration: {
+      type: Number,
       //required: true,
     },
     budget: {
