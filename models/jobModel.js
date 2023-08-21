@@ -22,9 +22,12 @@ const jobSchema = mongoose.Schema(
     files: {
       type: String,
     },
-    skills: {
-      type: [String],
-    },
+    skills: [
+      {
+        value: String,
+        label: String,
+      },
+    ],
     duration: {
       type: Number,
       //required: true,
