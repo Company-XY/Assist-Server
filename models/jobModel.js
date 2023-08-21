@@ -4,7 +4,7 @@ const jobSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Reference to the User model
+      ref: "User",
     },
     user_email: {
       type: String,
