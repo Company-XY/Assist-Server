@@ -22,7 +22,8 @@ const getUserJobs = asyncHandler(async (req, res) => {
 
 const createJobs = asyncHandler(async (req, res) => {
   try {
-    const { title, description, user_email } = req.body;
+    const { title, description, user_email, skills, budget, duration } =
+      req.body;
 
     if (!user_email) {
       return res.status(400).json({ message: "User email not found." });
@@ -32,6 +33,9 @@ const createJobs = asyncHandler(async (req, res) => {
       user_email,
       title,
       description,
+      skills,
+      budget,
+      duration,
     });
     res.status(201).json(newJob);
   } catch (error) {
