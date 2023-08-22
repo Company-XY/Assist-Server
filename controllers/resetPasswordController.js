@@ -23,14 +23,15 @@ const sentResetLink = asyncHandler(async (req, res) => {
     await user.save();
 
     // Send reset password email using Elastic Email API
-    const resetLink = `https://beta-assist.netlify.app/password/${resetToken}`;
+    const link = `https://beta-assist.netlify.app/password/${resetToken}`;
     const data = {
       from: "oloogeorge633@gmail.com",
       to: email,
       subject: "Password Reset",
-      bodyText: `Click the link to reset your password: ${resetLink}`,
+      bodyText: `Click the link to reset your password: ${link}`,
       apiKey: ELASTIC_EMAIL_API_KEY,
     };
+    console.log(link);
 
     const response = await axios({
       method: "post",
@@ -44,7 +45,7 @@ const sentResetLink = asyncHandler(async (req, res) => {
     if (response.data.success) {
       res
         .status(200)
-        .json({ message: "Password reset link sent successfully." });
+        .json({ message: `Password reset link sent successfully. ${link}` });
     } else {
       res.status(500).json({ message: "Failed to send reset link." });
     }
