@@ -28,10 +28,10 @@ const sentResetLink = asyncHandler(async (req, res) => {
       from: "oloogeorge633@gmail.com",
       to: email,
       subject: "Password Reset",
-      bodyText: `Click the link to reset your password: ${link}`,
+      bodyText: `Click the link to reset your password: ${link}.
+      If it does not work click here ${link}`,
       apiKey: ELASTIC_EMAIL_API_KEY,
     };
-    console.log(link);
 
     const response = await axios({
       method: "post",
@@ -45,7 +45,7 @@ const sentResetLink = asyncHandler(async (req, res) => {
     if (response.data.success) {
       res
         .status(200)
-        .json({ message: `Password reset link sent successfully. ${link}` });
+        .json({ message: `Password reset link sent successfully.` });
     } else {
       res.status(500).json({ message: "Failed to send reset link." });
     }
